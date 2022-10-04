@@ -1,4 +1,32 @@
 # artificial-intelligence-in-marketing
-AI in marketing
+Research possibilities to utilize AI in marketing
 
-- Create simple cookie to store value
+## Project structure
+
+```
+git_repo
+|
+├── model (analytics and datasets)
+│   └── analysis.py (analytics)
+│   └── data (datasets)
+│       └── (.csv)
+|
+├── demo (demo project)
+│   ├── (files)
+│   └── ...
+|
+```
+## Model
+- [] Choose dataset
+- [] Pre-process data
+- [] Create classifier model
+- [] Test model precision
+
+## Docs
+- [] Write theory about AI in marketing
+- [] Describe model principles
+- [] Create presentation
+
+## Demo
+- [] Demonstrate use case for classifier
+- [] Create simple cookie to store user actions
