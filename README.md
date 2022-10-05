@@ -9,7 +9,9 @@ git_repo
 ├── model (analytics and datasets)
 │   └── analysis.py (analytics)
 │   └── data (datasets)
-│       └── (.csv)
+│       ├── supermarket.csv (Pre-processed)
+│       ├── supermarket.arff (Original)
+│       └── replace_chars.py (? -> f)
 |
 ├── demo (demo project)
 │   ├── (files)

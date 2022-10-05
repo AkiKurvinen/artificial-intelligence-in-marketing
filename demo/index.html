@@ -6,10 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cookies</title>
     <link rel="stylesheet" href="style.css">
+    <script src="products.js"></script>
+    <script src="cookie.js"></script>
 </head>
 <body>
 <h1>Cookies</h1>
+<p id="content">cookie_content</p>
+<main>
+    <section id="shop"></section>
+</main>
 </body>
+
+
+<script>
+    let chart_items = []
+    function add_to_chart(clicked_id)
+    {
+        alert(clicked_id);
+        chart_items.push(clicked_id)
+        update_cookie(chart_items)
+    }
+</script>
+
+<script>document.getElementById('shop').innerHTML = generate_shop_items()</script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
-<script src="script.js"></script>
+<script>Cookies.remove('chart', { path: '',  sameSite: 'strict', secure: true})</script>
 </html>
