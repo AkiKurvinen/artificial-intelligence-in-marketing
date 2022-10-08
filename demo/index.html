@@ -6,26 +6,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cookies</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dialog.css">
     <script src="products.js"></script>
     <script src="cookie.js"></script>
 </head>
-<body>
-<h1>Cookies</h1>
-<p id="content">cookie_content</p>
+<body><nav><span>Shop</span> <div><span>Items</span><span>About</span><span>Chart</span></div></nav>
 <main>
+<h1>No Cookies</h1>
+<p id="content">cookie_content</p>
+
     <section id="shop"></section>
 </main>
+        <dialog id="myDialog">
+            <div class="infopopup">
+            <p><b>Sivustomme käyttää evästeitä</b></p>
+<p>Palveluntarjoajana haluamme taata asiakkaille mahdollisimman<br>hyvän käyttäjäkokemuksen keräämällä kävijätietoja omiin ja<br>yhteistyö&shy;kumppaneidemme tarkoituksiin.</p>
+<p>Painamalla "Hyväksy Kaikki" annat suostumuksen kaikkiin alla listattuihin evästekategorioihin.
+    Tarkemmat tiedot evästeiden jaottelusta käyttötarkoituksen mukaan löytyvät "Näytä lisätiedot"<br>-linkin takaa.</p>
+    <a href="#">Näytä lisätiedot</a>
+
+
+        <div id="cookie_switches"> <section>
+            <span>Välttämättömät</span>
+            <label class="switch">
+                <input type="checkbox" checked disabled>
+                <span class="slider round"></span>
+            </label></section></div>
+            <div class="buttons">
+                <button class="close">Kylkää Kaikki</button>
+                <button class="close" onclick="add_cookie()">Hyväksy Kaikki</button>
+</div>
+       </div>
+   </dialog>
 </body>
 
+<script>
+    const cookie_arr = ['Toiminnalliset', 'Tilastolliset', 'Tarpeelliset', 'Tekniset', 'Tieteelliset', 'Taiteelliset',
+    'Maagiset', 'Mystiset', 'Markkinalliset', 'Monipuoliset', 'Massiiviset', 'Monarkkiset', 'Maineelliset', 'Magneettiset', 'Minimaaliset']
+    let html_elem = ''
+    cookie_arr.forEach(elem => {
+        let box = `
+        <section>
+            <span>${elem}</span>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label></section>`
+        html_elem += box
+    })
+    document.getElementById('cookie_switches').innerHTML += html_elem
+</script>
 
 <script>
+let cookies = false
+
+const add_cookie = () =>{
+    cookies = true
+    console.log('add_cookie')
+}
     let chart_items = []
     function add_to_chart(clicked_id)
     {
         alert(clicked_id);
         chart_items.push(clicked_id)
-        update_cookie(chart_items)
+
+        // use cookies
+        if (cookies){
+            update_cookie(chart_items)
+            document.getElementById('shop').innerHTML=generate_shop_items_rec(chart_items)
+        }
     }
+</script>
+<script>
+    const modals = document.querySelectorAll("dialog")
+    // close dialogs (button click)
+    const closeBtns = document.querySelectorAll(".close");
+    modals[0].show()
+    closeBtns.forEach( (btn) => {
+
+    btn.addEventListener("click", () => {
+            var x = document.getElementById("myDialog");
+             x.close();
+             x.classList.add('displaynone')
+    })
+    });
 </script>
 
 <script>document.getElementById('shop').innerHTML = generate_shop_items()</script>
