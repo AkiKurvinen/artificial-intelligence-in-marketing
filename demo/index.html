@@ -19,11 +19,12 @@
 </main>
         <dialog id="myDialog">
             <div class="infopopup">
-            <p><b>Sivustomme käyttää evästeitä</b></p>
-<p>Palveluntarjoajana haluamme taata asiakkaille mahdollisimman<br>hyvän käyttäjäkokemuksen keräämällä kävijätietoja omiin ja<br>yhteistyö&shy;kumppaneidemme tarkoituksiin.</p>
-<p>Painamalla "Hyväksy Kaikki" annat suostumuksen kaikkiin alla listattuihin evästekategorioihin.
-    Tarkemmat tiedot evästeiden jaottelusta käyttötarkoituksen mukaan löytyvät "Näytä lisätiedot"<br>-linkin takaa.</p>
-    <a href="#">Näytä lisätiedot</a>
+
+            <p><b>Sivustomme käyttää evästeitä</b></p><!--
+            <p>Palveluntarjoajana haluamme taata asiakkaille mahdollisimman<br>hyvän käyttäjäkokemuksen keräämällä kävijätietoja omiin ja<br>yhteistyö&shy;kumppaneidemme tarkoituksiin.</p>
+            <p>Painamalla "Hyväksy Kaikki" annat suostumuksen kaikkiin alla listattuihin evästekategorioihin.
+            Tarkemmat tiedot evästeiden jaottelusta käyttötarkoituksen mukaan löytyvät "Näytä lisätiedot"<br>-linkin takaa.</p>
+            <a href="#">Näytä lisätiedot</a>
 
 
         <div id="cookie_switches"> <section>
@@ -31,11 +32,12 @@
             <label class="switch">
                 <input type="checkbox" checked disabled>
                 <span class="slider round"></span>
-            </label></section></div>
+            </label></section>
+        </div> -->
             <div class="buttons">
                 <button class="close">Kylkää Kaikki</button>
                 <button class="close" onclick="add_cookie()">Hyväksy Kaikki</button>
-</div>
+            </div>
        </div>
    </dialog>
 </body>
@@ -54,7 +56,7 @@
             </label></section>`
         html_elem += box
     })
-    document.getElementById('cookie_switches').innerHTML += html_elem
+   // document.getElementById('cookie_switches').innerHTML += html_elem
 </script>
 
 <script>
@@ -63,6 +65,7 @@ let cookies = false
 const add_cookie = () =>{
     cookies = true
     console.log('add_cookie')
+
 }
     let chart_items = []
     function add_to_chart(clicked_id)
@@ -78,6 +81,7 @@ const add_cookie = () =>{
     }
 </script>
 <script>
+
     const modals = document.querySelectorAll("dialog")
     // close dialogs (button click)
     const closeBtns = document.querySelectorAll(".close");
