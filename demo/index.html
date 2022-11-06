@@ -12,15 +12,21 @@
 </head>
 <body><nav><span>Shop</span> <div><span>Items</span><span>About</span><span>Chart</span></div></nav>
 <main>
-<h1>No Cookies</h1>
-<p id="content">cookie_content</p>
 
-    <section id="shop"></section>
+<div class="wrap">
+    <div>
+        <h1>No Cookies</h1>
+        <p id="content">cookie_content</p>
+        <section id="shop"></section>
+    </div>
+        
+    <img src="vpn_ad.jpg" alt="" id="vpn_ad">
+</div>
 </main>
         <dialog id="myDialog">
             <div class="infopopup">
 
-            <p><b>Sivustomme käyttää evästeitä</b></p><!--
+            <p><b>Sivustomme käyttää evästeitä</b></p>
             <p>Palveluntarjoajana haluamme taata asiakkaille mahdollisimman<br>hyvän käyttäjäkokemuksen keräämällä kävijätietoja omiin ja<br>yhteistyö&shy;kumppaneidemme tarkoituksiin.</p>
             <p>Painamalla "Hyväksy Kaikki" annat suostumuksen kaikkiin alla listattuihin evästekategorioihin.
             Tarkemmat tiedot evästeiden jaottelusta käyttötarkoituksen mukaan löytyvät "Näytä lisätiedot"<br>-linkin takaa.</p>
@@ -33,7 +39,7 @@
                 <input type="checkbox" checked disabled>
                 <span class="slider round"></span>
             </label></section>
-        </div> -->
+        </div>
             <div class="buttons">
                 <button class="close">Kylkää Kaikki</button>
                 <button class="close" onclick="add_cookie()">Hyväksy Kaikki</button>
@@ -56,7 +62,7 @@
             </label></section>`
         html_elem += box
     })
-   // document.getElementById('cookie_switches').innerHTML += html_elem
+    document.getElementById('cookie_switches').innerHTML += html_elem
 </script>
 
 <script>
@@ -65,6 +71,7 @@ let cookies = false
 const add_cookie = () =>{
     cookies = true
     console.log('add_cookie')
+    document.getElementById('vpn_ad').style.display= "none";
 
 }
     let chart_items = []

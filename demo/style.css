@@ -28,4 +28,11 @@ nav span, nav div{
 }
 main{
     padding: 1em;
+    
+}
+.wrap{
+    display: flex
+}
+#vpn_ad{
+    float: left;
 }
