@@ -16,6 +16,7 @@
 <div class="wrap">
     <div>
         <h1>No Cookies</h1>
+        <button onclick="del_cookie()">Reset</button>
         <p id="content">cookie_content</p>
         <section id="shop"></section>
     </div>
@@ -67,16 +68,16 @@
 
 <script>
 let cookies = false
+let chart_items = []
 
-const add_cookie = () =>{
-    cookies = true
-    console.log('add_cookie')
-    document.getElementById('vpn_ad').style.display= "none";
+function del_cookie (){
+    Cookies.remove('chart')
+    chart_items = []
+    document.getElementById('content').innerHTML = 'cookie_content'
+    document.getElementById('shop').innerHTML=generate_shop_items_rec(chart_items)
 
 }
-    let chart_items = []
-    function add_to_chart(clicked_id)
-    {
+function add_to_chart(clicked_id){
         alert(clicked_id);
         chart_items.push(clicked_id)
 
@@ -86,6 +87,25 @@ const add_cookie = () =>{
             document.getElementById('shop').innerHTML=generate_shop_items_rec(chart_items)
         }
     }
+const add_cookie = () =>{
+    cookies = true
+    console.log('add_cookie')
+    document.getElementById('vpn_ad').style.display= "none";
+    let chart = load_cookie()
+    if (chart.length > 0){
+        chart.forEach(element => {
+        chart_items.push(element)
+
+        // use cookies
+        if (cookies){
+            update_cookie(chart_items)
+            document.getElementById('shop').innerHTML=generate_shop_items_rec(chart_items)
+        }
+        });
+    }
+    
+    }
+
 </script>
 <script>
 
