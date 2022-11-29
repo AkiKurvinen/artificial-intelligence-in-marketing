@@ -1,16 +1,16 @@
 aside{
-    width: 250px;
-    height: 660px;
+    width: 227px;
+    height: 600px;
     background-image: url('img/laptop_ad.jpg');
 }
 @media (max-width:900px)  {
     aside{
-        width: 660px;
-        height: 250px;
+        width: 600px;
+        height: 227px;
         background-image: url('img/tablet_ad.jpg');
     }
 }
-@media (max-width:660px)  {
+@media (max-width:600px)  {
     aside{
         width: 250px;
         height: 250px;

@@ -98,7 +98,7 @@ const generate_shop_items_rec = (chart_items) => {
 }
 
 const generate_shop_items = () => {
-        read_json_data()
+    read_json_data()
     const products = ['grocery-misc', 'baby-needs', 'bread-and-cake', 'baking-needs', 'coupons',
     'juice-sat-cord-ms', 'tea', 'biscuits', 'canned-fish-meat', 'canned-fruit', 'canned-vegetables',
     'breakfast-food', 'cigs-tobacco-pkts', 'cigarette-cartons', 'cleaners-polishers', 'coffee',

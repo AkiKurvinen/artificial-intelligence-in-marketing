@@ -6,7 +6,7 @@ const update_cookie = (items) =>{
     if(items.length != 0){
 
         let json_str = JSON.stringify(items);
-        Cookies.set('chart', json_str, {expires: 2,  sameSite: 'strict', secure: true})
+        Cookies.set('chart', json_str, {expires: 2,  sameSite:'strict', secure: true})
 
     }
     if (Cookies.get('chart')){
