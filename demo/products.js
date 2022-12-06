@@ -1,5 +1,12 @@
+var json = new Object
 
-const generate_shop_items_rec = (recom) => {
+async function read_json_data() {
+    json = await fetch('../model/rulesjson.json')
+    .then(response => response.json())
+    .catch(error => console.log(error));
+}
+
+const generate_shop_items_rec = (chart_items) => {
     const products = ['grocery-misc', 'baby-needs', 'bread-and-cake', 'baking-needs', 'coupons',
     'juice-sat-cord-ms', 'tea', 'biscuits', 'canned-fish-meat', 'canned-fruit', 'canned-vegetables',
     'breakfast-food', 'cigs-tobacco-pkts', 'cigarette-cartons', 'cleaners-polishers', 'coffee',
@@ -18,7 +25,10 @@ const generate_shop_items_rec = (recom) => {
     '750ml-red-nz', '750ml-white-imp', '750ml-red-imp', 'sparkling-nz', 'sparkling-imp', 'brew-kits/accesry',
     'port-and-sherry', 'ctrled-label-wine', 'non-host-support'].sort()
 
-    function get_random(){
+    function get_proba(item){
+        let proba = json[item]
+
+        return proba
         return Math.floor(Math.random() * 100) + 0
     }
     function get_color(num){
@@ -36,16 +46,59 @@ const generate_shop_items_rec = (recom) => {
         }
 
     }
-    let html_elements = ''
+    let html_elements = []
+    let recom_items = []
+    chart_items.forEach(item => {
+        recom_items.push(item)
+    })
+    // let recom_items = json[chart_items[0]]
+    let return_items = []
     products.forEach(item => {
-        let probability = get_random()
+        recom_items.forEach(itm=>{
+            try {
+                if(json[itm].includes(item)){
+                    if(!return_items.includes(item)){
+                        return_items.push(item)
+                       // return_items.push(`<button id="${item}" onClick="add_to_chart(this.id)" style="background-color:green;">${item}</button>`)
+                    }
+                }
+           // else{
+            //    html_elements.push(`<button id="${item}" onClick="add_to_chart(this.id)" style="background-color:crimson;">${item}</button>`)
+           // }
+            }
+            catch (error) {
+                console.log(`${itm} not in data`);
+             //   html_elements.push(`<button id="${item}" onClick="add_to_chart(this.id)" style="background-color:white;">${item}</button>`)
+            }
+        })
+
+        // Algorithm goes here
+        let probability = get_proba(item)
+
+    });
+    /*products.forEach(item => {
+        // Algorithm goes here
+        let probability = get_proba(item)
         html_elements += `<button id="${item}" onClick="add_to_chart(this.id)" style="background-color:${get_color(probability)}">${item} ${probability}%</button>`
     });
+    */
+    let html = ''
+    products.forEach(item => {
 
-    return html_elements
+        if(return_items.includes(item)){
+             html += `<button id="${item}" onClick="add_to_chart(this.id)" style="background-color:green;">${item}</button>`
+        }
+        else{
+            html += `<button id="${item}" onClick="add_to_chart(this.id)" style="background-color:white;">${item}</button>`
+        }
+
+    })
+
+    return html
 }
 
 const generate_shop_items = () => {
+    read_json_data()
     const products = ['grocery-misc', 'baby-needs', 'bread-and-cake', 'baking-needs', 'coupons',
     'juice-sat-cord-ms', 'tea', 'biscuits', 'canned-fish-meat', 'canned-fruit', 'canned-vegetables',
     'breakfast-food', 'cigs-tobacco-pkts', 'cigarette-cartons', 'cleaners-polishers', 'coffee',

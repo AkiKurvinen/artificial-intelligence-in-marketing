@@ -1,0 +1,19 @@
+aside{
+    width: 227px;
+    height: 600px;
+    background-image: url('img/laptop_ad.jpg');
+}
+@media (max-width:900px)  {
+    aside{
+        width: 600px;
+        height: 227px;
+        background-image: url('img/tablet_ad.jpg');
+    }
+}
+@media (max-width:600px)  {
+    aside{
+        width: 250px;
+        height: 250px;
+        background-image: url('img/mobile_ad.jpg');
+    }
+}
